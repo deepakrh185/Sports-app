@@ -13,9 +13,9 @@ function Header() {
         <div className="md:ml-2 lg:ml-52 "></div>
         <div className="flex items-center flex-grow sm:flex-grow-0  mr-2 ">
           <Image
-            src="/dew.png"
+            src="/logo.png"
             width={100}
-            height={90}
+            height={80}
             className="cursor-pointer"
           />
         </div>
@@ -40,7 +40,7 @@ function Header() {
               0
             </span>
             <ShoppingBagIcon className="h-6" />
-            <p className="link font-extrabold  ml-2  mt-1 md:mr-2 lg:mr-52 sm:mr-2 ">
+            <p className="link font-bold  ml-2  mt-1 md:mr-2 lg:mr-52 sm:mr-2 ">
               Cart
             </p>
           </div>
