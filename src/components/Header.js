@@ -9,38 +9,42 @@ import Image from "next/image";
 function Header() {
   return (
     <header>
-      <div className="flex items-center bg-green-600  ">
-        <div className="md:ml-2 lg:ml-52 "></div>
-        <div className="flex items-center flex-grow sm:flex-grow-0  mr-2 ">
+      <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
+        <div className="flex items-center flex-grow sm:flex-grow-0 md:ml-2 lg:ml-52 ml-2 mt-1">
           <Image
             src="/logo.png"
             width={100}
             height={80}
             className="cursor-pointer"
+            objectFit="contain"
           />
         </div>
-        <div className="bg-green-500 hover:bg-green-700 flex sm:flex  items-center h-10 rounded-md flex-grow cursor-pointer ml-9 hidden">
+        <div className="bg-green-500 hover:bg-green-700 flex sm:flex  items-center h-10 rounded-md flex-grow cursor-pointer lg:ml-9 hidden">
           <input
             type="text"
             className="p-2 h-full w-6 flex-grow rounded-l-md flex-shrink outline-none px-4"
           />
           <SearchIcon className="h-12 p-4" />
         </div>
-        <div className="text-white flex items-center text-sm space-x-6 mx-6 whitespace-nowrap cursor-pointer ">
+        <div className="text-white flex items-center text-sm space-x-6 mx-2 whitespace-nowrap cursor-pointer ">
           <div className="link flex">
             <UserIcon className="h-6" />
-            <p className=" link font-bold ml-2 sm:inline mt-1">Sign In</p>
+            <p className=" link font-bold ml-2 sm:inline mt-1 text-xs">
+              Sign In
+            </p>
           </div>
           <div className="link flex">
             <BriefcaseIcon className="h-6" />
-            <p className="link font-bold ml-2 sm:inline mt-1 ">Your Orders</p>
+            <p className="link font-bold ml-2 sm:inline  mt-1 text-xs ">
+              Your Orders
+            </p>
           </div>
           <div className="relative flex items-center flex-shrink">
             <span className="absolute top-0 right-0 left-4 md:right-10 sm:right-10 h-4 w-4 bg-green-300 text-center rounded-full text-black font-bold  text-xs">
               0
             </span>
             <ShoppingBagIcon className="h-6" />
-            <p className="link font-bold  ml-2  mt-1 md:mr-2 lg:mr-52 sm:mr-2 ">
+            <p className="link font-bold  text-xs ml-2 mt-1 md:mr-2 lg:mr-52 sm:mr-2 hidden sm:inline">
               Cart
             </p>
           </div>
