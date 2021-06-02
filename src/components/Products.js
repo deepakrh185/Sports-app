@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Image from "next/image";
-import styles from "../styles/Product.module.css";
 import Tilt from "react-tilt";
 import { StarIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
 
 function Products({ id, title, description, image, price }) {
   const router = useRouter();
@@ -17,27 +18,25 @@ function Products({ id, title, description, image, price }) {
   const strikePrice = useState(
     Math.floor(Math.random() * (MAX__RATING - MIN__RATING + 1) + MIN__RATING)
   );
-  console.log(rating);
+  const dispatch = useDispatch();
+  const addProductId = () => {
+    router.push(`/product/${id}`);
+
+    const product = {
+      rating,
+    };
+    dispatch(addToBasket(product));
+  };
   return (
     <main className="bg-green-200 p-4 m-5 rounded-md">
-      <Tilt
-        className="flex flex-col m-2 p-6 z-30 cursor-pointer bg-green-50 rounded-2xl  Tilt object-contain"
-        options={{
-          max: 30,
-          perspective: 700,
-          scale: 1,
-          speed: 500,
-          transition: true,
-        }}
-      >
-        <Image
-          src={image}
-          width={200}
-          height={200}
-          objectFit="contain"
-          onClick={() => router.push(`/product/${id}`)}
-        />
-        <p>{title}</p>
+      <Tilt className="flex flex-col m-2 p-6 z-30  bg-white rounded-2xl  Tilt object-contain">
+        <Image src={image} width="200" height="200" objectFit="contain" />
+        <p
+          className="hover:underline cursor-pointer mt-2"
+          onClick={addProductId}
+        >
+          {title}
+        </p>
         <div className="my-1 flex items-center font-medium bg-green-400 text-white px-1 rounded-md flex-shrink w-12 ">
           {rating}
           <StarIcon className="h-5" />

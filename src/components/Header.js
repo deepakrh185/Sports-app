@@ -8,7 +8,7 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <header>
+    <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
       <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
         <div className="flex items-center flex-grow sm:flex-grow-0 md:ml-2 lg:ml-52 ml-2 mt-1">
           <Image

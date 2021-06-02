@@ -7,7 +7,7 @@ import path from "path";
 export default function Home({ product }) {
   console.log(product);
   return (
-    <div className="">
+    <div className="bg-gray-100">
       <Head>
         <title>Sports</title>
       </Head>
