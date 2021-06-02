@@ -12,6 +12,7 @@ function Detail({ products }) {
   console.log(items[0]);
   const [sideImage, setSideImage] = useState(products.images[0].img);
   console.log(items.rating);
+  console.log(products);
 
   return (
     <>
@@ -28,20 +29,33 @@ function Detail({ products }) {
           / <span className="text-yellow-500">{products.title}</span>
         </div>
       </div>
-      <main className="max-w-screen-xl mx-auto mt-5">
-        <div className="flex flex-wrap">
+      <main className="max-w-screen-xl mx-auto mt-5 ">
+        <div className="flex flex-wrap ">
           <div className="px-5 mb-7 w-full md:w-7/12">
-            <div className="w-full mb-4">
-              <Image
-                src={sideImage}
-                objectFit="contain"
-                width={700}
-                height={500}
-                className="w-full rounded-lg"
-              />
+            <div className="w-full mb-4 mt-14   ">
+              {products.imageBounce === "bounce" && (
+                <div className="items-center flex justify-center ">
+                  <img
+                    src={sideImage}
+                    objectFit="contain"
+                    className="w-full rounded-lg animate-bounce h-96 w-96 p-4 "
+                  />
+                </div>
+              )}
+              {products.imageBounce === "nbounce" && (
+                <div className="items-center flex justify-center ">
+                  <Image
+                    src={sideImage}
+                    height={400}
+                    width={700}
+                    objectFit="contain"
+                    className="w-full rounded-lg h-96 w-80 "
+                  />
+                </div>
+              )}
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center mt-8">
               {products.images &&
                 products.images.map((image) => (
                   <div
@@ -93,6 +107,7 @@ export async function getStaticProps(context) {
         image: products.image,
         price: products.price,
         images: products.images,
+        imageBounce: products.imageBounce,
       },
     },
   };

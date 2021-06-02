@@ -13,10 +13,14 @@ module.exports = {
           DEFAULT: "#131921",
         },
       },
+      animation: {
+        bounce: "bounce 1.8s infinite",
+      },
     },
   },
   variants: {
     extend: {},
   },
+
   plugins: [require("@tailwindcss/line-clamp")],
 };
