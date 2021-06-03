@@ -126,7 +126,7 @@ function Detail({ product }) {
                       <Image
                         src={image.img}
                         width={100}
-                        height={300}
+                        height={100}
                         objectFit="contain"
                         className="rounded-md "
                       />
