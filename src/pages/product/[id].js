@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../slices/basketSlice";
 import Head from "next/head";
-import { StarIcon } from "@heroicons/react/outline";
+import { StarIcon, CheckCircleIcon } from "@heroicons/react/outline";
 import QuantityCount from "../../components/QuantityCount";
 
 function Detail({ product }) {
@@ -15,8 +15,9 @@ function Detail({ product }) {
   const [sideImage, setSideImage] = useState(images[0].img);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [lineClamp, setLineClamp] = useState(true);
+
   const dispatch = useDispatch();
-  console.log("added", added);
 
   const MAX_RATING = 5;
   const MIN_RATING = 1;
@@ -38,7 +39,8 @@ function Detail({ product }) {
       image,
     };
     dispatch(addToBasket(products));
-    setAdded(false);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 3000);
   };
   return (
     <>
@@ -46,6 +48,7 @@ function Detail({ product }) {
         <title>{title} | Amazon</title>
       </Head>
       <Header />
+
       <div className="bg-gray-100 p-4 ">
         <div className="max-w-screen-xl mx-auto">
           <span className="font-medium">
@@ -56,6 +59,26 @@ function Detail({ product }) {
             <Link href="/product">Product</Link>
           </span>{" "}
           / <span className="text-green-600">{title}</span>
+        </div>
+      </div>
+      <div
+        className="relative "
+        style={{ position: "sticky", top: 100, zIndex: 50 }}
+      >
+        <div className="absolute right-0 top-0">
+          {added && (
+            <div
+              class=" px-4 py-3 rounded-md relative  bg-yellow-400 mr-2"
+              role="alert"
+            >
+              <div className="flex text-white">
+                <CheckCircleIcon className="h-6 mr-2 text-green-500" />
+                <p class="font-medium text-black">
+                  Your product is added to cart !
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <div className="bg-green-200 block place-items-center p-10">
@@ -119,12 +142,25 @@ function Detail({ product }) {
                 <h1 className="text-4xl">₹{price}.00</h1>&nbsp;
                 <strike className="text-2xl">₹{strikePrice}</strike>
               </div>
-
-              <p className="text-gray-600 text-base mb-5">{description}</p>
+              {lineClamp ? (
+                <p className="text-gray-600 text-base mb-1 line-clamp-3 ">
+                  {description}
+                </p>
+              ) : (
+                <p className="text-gray-600 text-base mb-5 ">{description}</p>
+              )}
+              {lineClamp && (
+                <button
+                  onClick={() => setLineClamp(false)}
+                  className="text-black font-bold focus:outline-none mb-4"
+                >
+                  Read More
+                </button>
+              )}
               <QuantityCount setQuantity={setQuantity} quantity={quantity} />
 
               <button onClick={addItemToBasket} className="w-full button mt-4">
-                {added ? "Added" : "Add to Busket"}
+                {added ? "Added" : "Add to Basket"}
               </button>
             </div>
           </div>
