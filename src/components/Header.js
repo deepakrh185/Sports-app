@@ -5,8 +5,11 @@ import {
   UserIcon,
 } from "@heroicons/react/outline";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 function Header() {
+  const items = useSelector(selectItems);
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
       <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
@@ -41,7 +44,7 @@ function Header() {
           </div>
           <div className="relative flex items-center flex-shrink">
             <span className="absolute top-0 right-0 left-4 md:right-10 sm:right-10 h-4 w-4 bg-green-300 text-center rounded-full text-black font-bold  text-xs">
-              0
+              {items.length}
             </span>
             <ShoppingBagIcon className="h-6" />
             <p className="link font-bold  text-xs ml-2 mt-1 md:mr-2 lg:mr-52 sm:mr-2 hidden sm:inline">
