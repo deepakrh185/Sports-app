@@ -7,8 +7,10 @@ import {
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
+import { useRouter } from "next/router";
 
 function Header() {
+  const router = useRouter();
   const items = useSelector(selectItems);
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
@@ -20,6 +22,7 @@ function Header() {
             height={80}
             className="cursor-pointer"
             objectFit="contain"
+            onClick={() => router.push("/")}
           />
         </div>
         <div className="bg-green-500 hover:bg-green-700 flex sm:flex  items-center h-10 rounded-md flex-grow cursor-pointer lg:ml-9 hidden">

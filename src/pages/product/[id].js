@@ -89,7 +89,7 @@ function Detail({ product }) {
         </div>
       </div>
       <div className="bg-green-200 block place-items-center p-10">
-        <main className="max-w-screen-xl m-auto bg-white p-4 rounded-lg">
+        <main className="max-w-screen-xl m-auto bg-white p-7 rounded-lg">
           <div className="flex flex-wrap ">
             <div className="px-5 mb-7 w-full md:w-7/12">
               <div className="w-full mb-4 mt-14   ">
@@ -106,8 +106,8 @@ function Detail({ product }) {
                   <div className="items-center flex justify-center ">
                     <Image
                       src={sideImage}
-                      height={400}
-                      width={700}
+                      height={500}
+                      width={400}
                       objectFit="contain"
                       className="w-full rounded-lg h-96 w-80 "
                     />
@@ -115,27 +115,27 @@ function Detail({ product }) {
                 )}
               </div>
 
-              <div className="flex items-center mt-20">
+              <div className="flex items-center ">
                 {images &&
                   images.map((image) => (
                     <div
-                      className="mr-3 mb-3 cursor-pointer"
+                      className="lg:mr-10 md:mr-3  cursor-pointer"
                       onClick={() => setSideImage(image.img)}
                       key={image.id}
                     >
                       <Image
                         src={image.img}
                         width={100}
-                        height={100}
+                        height={300}
                         objectFit="contain"
-                        className="rounded-md"
+                        className="rounded-md "
                       />
                     </div>
                   ))}
               </div>
             </div>
             <div className="px-5 mb-10 w-full md:w-5/12 bg-white">
-              <h1 className="my-2 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-400 mb-7">
+              <h1 className="lg:my-2 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-400 mb-7">
                 {title}
               </h1>
               <div className="flex items-center text-center mb-4">
