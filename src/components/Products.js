@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 function Products({ id, title, description, image, price }) {
   const router = useRouter();
   const MAX_RATING = 4;
-  const MIN_RATING = 1;
+  const MIN_RATING = 2.5;
   const rating = useState(
     (Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING).toFixed(1)
   );

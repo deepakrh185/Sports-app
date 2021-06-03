@@ -9,6 +9,7 @@ import { addToBasket } from "../../slices/basketSlice";
 import Head from "next/head";
 import { StarIcon, CheckCircleIcon } from "@heroicons/react/outline";
 import QuantityCount from "../../components/QuantityCount";
+import { ShoppingBagIcon } from "@heroicons/react/outline";
 
 function Detail({ product }) {
   const { title, price, description, image, images, imageBounce } = product;
@@ -19,12 +20,18 @@ function Detail({ product }) {
 
   const dispatch = useDispatch();
 
-  const MAX_RATING = 5;
-  const MIN_RATING = 1;
-
-  const [rating] = useState(
-    Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+  const MAX_RATING = 4;
+  const MIN_RATING = 2.5;
+  const rating = useState(
+    (Math.random() * (MAX_RATING - MIN_RATING + 1) + MIN_RATING).toFixed(1)
   );
+
+  const MAX_REVIEWS = 50000;
+  const MIN_REVIEWS = 28000;
+  const reviews = useState(
+    Math.round(Math.random() * (MAX_REVIEWS - MIN_REVIEWS + 1) + MIN_REVIEWS)
+  );
+
   const MAX__RATING = 2000;
   const MIN__RATING = 1000;
   const strikePrice = useState(
@@ -82,7 +89,7 @@ function Detail({ product }) {
         </div>
       </div>
       <div className="bg-green-200 block place-items-center p-10">
-        <main className="max-w-screen-xl m-auto bg-white p-8">
+        <main className="max-w-screen-xl m-auto bg-white p-4 rounded-lg">
           <div className="flex flex-wrap ">
             <div className="px-5 mb-7 w-full md:w-7/12">
               <div className="w-full mb-4 mt-14   ">
@@ -108,7 +115,7 @@ function Detail({ product }) {
                 )}
               </div>
 
-              <div className="flex items-center mt-8">
+              <div className="flex items-center mt-20">
                 {images &&
                   images.map((image) => (
                     <div
@@ -132,36 +139,54 @@ function Detail({ product }) {
                 {title}
               </h1>
               <div className="flex items-center text-center mb-4">
-                <h1 className="text-2xl">Rating : </h1>&nbsp;
-                <span className="my-2 flex items-center justify-center align-center text-xl px-1 rounded-md bg-green-400 flex-shrink w-12  text-white ring-current py-1">
+                <h4 className="text-xl flex">Rating : </h4>&nbsp;
+                <span className="my-1 flex items-center justify-center align-center text-xl px-1 rounded-md bg-green-400 flex-shrink w-16  text-white ring-current py-1 ">
                   {rating}
                   <StarIcon className="h-5 fill-current text-white" />
                 </span>
               </div>
-              <div className="flex items-center  mb-8">
+              <div className="flex items-center text-center mb-4">
+                <h4 className="text-xl flex">Reviews : </h4>&nbsp;
+                <p className="text-xl"> {reviews}</p>
+              </div>
+
+              <div className="flex items-center  mb-6">
                 <h1 className="text-4xl">₹{price}.00</h1>&nbsp;
                 <strike className="text-2xl">₹{strikePrice}</strike>
               </div>
               {lineClamp ? (
-                <p className="text-gray-600 text-base mb-1 line-clamp-3 ">
+                <p className="text-black p-1  text-base line-clamp-3 shadow-2xl bg-white  h-18 ">
                   {description}
                 </p>
               ) : (
-                <p className="text-gray-600 text-base mb-5 ">{description}</p>
+                <p className="text-black text-base mb-5 p-1 shadow-xl bg-white rounded-lg h-18">
+                  {description}
+                </p>
               )}
               {lineClamp && (
-                <button
-                  onClick={() => setLineClamp(false)}
-                  className="text-black font-bold focus:outline-none mb-4"
-                >
-                  Read More
-                </button>
+                <div className="bg-white mb-2 p-1">
+                  <button
+                    onClick={() => setLineClamp(false)}
+                    className="text-black font-extrabold focus:outline-none shadow-2xl mb-2 "
+                  >
+                    Read More
+                  </button>
+                </div>
               )}
-              <QuantityCount setQuantity={setQuantity} quantity={quantity} />
-
-              <button onClick={addItemToBasket} className="w-full button mt-4">
-                {added ? "Added" : "Add to Basket"}
-              </button>
+              <QuantityCount
+                setQuantity={setQuantity}
+                quantity={quantity}
+                className="mt-4"
+              />
+              <div
+                className="flex items-center text-center justify-center button mt-4"
+                onClick={addItemToBasket}
+              >
+                <button className="font-bold focus:outline-none">
+                  {added ? "Added" : "Add to Cart"}
+                </button>
+                <ShoppingBagIcon className="h-5 ml-1" />
+              </div>
             </div>
           </div>
         </main>
