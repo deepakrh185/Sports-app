@@ -10,6 +10,7 @@ import Head from "next/head";
 import { StarIcon, CheckCircleIcon } from "@heroicons/react/outline";
 import QuantityCount from "../../components/QuantityCount";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
+import styles from "../../styles/Product.module.css";
 
 function Detail({ product }) {
   const { title, price, description, image, images, imageBounce } = product;
@@ -63,7 +64,7 @@ function Detail({ product }) {
       </Head>
       <Header />
 
-      <div className="bg-gray-100 p-4 ">
+      <div className="bg-gray-100 lg:p-6 md:p-6 p-4">
         <div className="max-w-screen-xl mx-auto">
           <span className="font-medium">
             <Link href="/">Home</Link>
@@ -95,11 +96,11 @@ function Detail({ product }) {
           )}
         </div>
       </div>
-      <div className="bg-green-200 block place-items-center p-10">
-        <main className="max-w-screen-xl m-auto bg-white p-7 rounded-lg">
+      <div className="bg-green-200 block place-items-center lg:p-10 md:p-10">
+        <main className="max-w-screen-xl m-auto bg-white rounded-lg ">
           <div className="flex flex-wrap ">
             <div className="px-5 mb-7 w-full md:w-7/12">
-              <div className="w-full mb-4 mt-14   ">
+              <div className="w-full mb-4 mt-14 p-8">
                 {imageBounce === "bounce" && (
                   <div className="items-center flex justify-center ">
                     <img
@@ -122,11 +123,11 @@ function Detail({ product }) {
                 )}
               </div>
 
-              <div className="flex items-center ">
+              <div className={`flex`}>
                 {images &&
                   images.map((image) => (
                     <div
-                      className="lg:mr-10 md:mr-3  cursor-pointer"
+                      className={` rounded-lg lg:p-1 md:p-1 mt-2 flex w-full p-1 hover:bg-green-400   ${styles.product_image_wrapper}`}
                       onClick={() => setSideImage(image.img)}
                       key={image.id}
                     >
@@ -134,15 +135,19 @@ function Detail({ product }) {
                         width={200}
                         height={200}
                         src={image.img}
-                        objectFit="contain"
-                        className="rounded-md "
+                        objectFit="cover"
+                        loading="lazy"
+                        className={
+                          "cursor-pointer rounded-lg overflow-hidden w-full " +
+                          styles.loop_product_image
+                        }
                       />
                     </div>
                   ))}
               </div>
             </div>
-            <div className="px-5 mb-10 w-full md:w-5/12 bg-white">
-              <h1 className="lg:my-2 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-400 ">
+            <div className="px-6 mb-10 w-full md:w-5/12 bg-white">
+              <h1 className="lg:my-6 md:my-6 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-500 ">
                 {title}
               </h1>
               <div className="flex items-center text-center mb-4 mt-10">
