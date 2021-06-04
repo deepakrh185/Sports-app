@@ -5,14 +5,14 @@ import styles from "../styles/Product.module.css";
 
 function Filter() {
   const dispatch = useDispatch();
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("All");
   const [lastChange, setLastChange] = useState(null);
 
   const all_products = useSelector(selectProduct);
 
   const getUniqueValues = (data, type) => {
     const unique = data.map((item) => item[type]);
-    return ["all", ...new Set(unique)];
+    return ["All", ...new Set(unique)];
   };
   const category = all_products
     ? getUniqueValues(all_products, "category")
@@ -25,7 +25,7 @@ function Filter() {
       setLastChange("category");
     }
     const filtered =
-      value != "all"
+      value != "All"
         ? all_products.filter((data) => data[item].includes(value))
         : all_products;
     dispatch(updateFilter(filtered));
@@ -39,21 +39,21 @@ function Filter() {
     if (all_products) {
       let filtered = all_products;
 
-      if (hello[lastChange] !== "all") {
+      if (hello[lastChange] !== "All") {
         filtered = all_products.filter(
           (product) => product[lastChange] === hello[lastChange]
         );
       } else {
         items.forEach((x) => {
           filtered =
-            x == lastChange && hello[x] !== "all"
+            x == lastChange && hello[x] !== "All"
               ? filtered.filter((product) => product[x] === hello[x])
               : filtered;
         });
       }
 
       items.forEach((x) => {
-        if (hello[x] !== "all") {
+        if (hello[x] !== "All") {
           filtered =
             x !== lastChange
               ? filtered.filter((product) => product[x] === hello[x])
@@ -84,7 +84,7 @@ function Filter() {
                 key={value}
                 className={`${
                   value == activeCategory && styles.active_filter
-                } text-gray-500 cursor-pointer mb-2`}
+                } text-gray-500 cursor-pointer mb-8 font-medium`}
                 onClick={() => filterCategory(value, "category")}
               >
                 {value}

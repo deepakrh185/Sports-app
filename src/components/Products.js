@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-function Products({ id, title, description, image, price, images, product }) {
+function Products({ id, title, description, price, images }) {
   const router = useRouter();
   const MAX_RATING = 4;
   const MIN_RATING = 2.5;

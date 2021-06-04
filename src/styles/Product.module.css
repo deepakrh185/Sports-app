@@ -85,6 +85,6 @@
   object-fit: cover;
 }
 .active_filter {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid rgb(45, 216, 102);
   width: fit-content;
 }
