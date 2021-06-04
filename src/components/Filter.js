@@ -101,7 +101,7 @@ function Filter() {
         </div>
       </div>
       <div className="mb-4 pr-10">
-        <h2 className="font-bold text-base text-gray-600">Price</h2>
+        <h2 className="font-bold text-lg text-black">Price</h2>
         <div className="flex flex-col my-5">
           <InputRange
             maxValue={priceMax}
