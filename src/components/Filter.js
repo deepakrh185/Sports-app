@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { selectProduct, updateFilter } from "../slices/basketSlice";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/Product.module.css";
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/index.css";
 
 function Filter() {
   const dispatch = useDispatch();
   const [activeCategory, setActiveCategory] = useState("All");
   const [lastChange, setLastChange] = useState(null);
-
+  const [price, setPrice] = useState(0);
+  const [priceMax, setPriceMax] = useState(1);
   const all_products = useSelector(selectProduct);
 
   const getUniqueValues = (data, type) => {
@@ -64,19 +67,24 @@ function Filter() {
     }
   }, [activeCategory, lastChange]);
 
-  //   useEffect(() => {
-  //     if (!all_products) return false;
-  //     const max = all_products
-  //       ?.map((product) => product.price)
-  //       .reduce((a, b) => Math.max(a, b));
-  //     setPriceMax(max);
-  //     setPrice(max);
-  //   }, [all_products]);
+  useEffect(() => {
+    const max = all_products
+      ?.map((product) => product.price)
+      .reduce((a, b) => Math.max(a, b));
+    setPriceMax(max);
+    setPrice(max);
+  }, [all_products]);
+
+  const priceFilter = (value) => {
+    setPrice(value);
+    const filtered = all_products.filter((product) => product.price <= value);
+    dispatch(updateFilter(filtered));
+  };
 
   return (
     <div className="flex flex-col mt-10">
       <div className="mb-4">
-        <h2 className="font-bold text-base text-gray-600">Category</h2>
+        <h1 className="font-bold text-3xl text-black ">Category</h1>
         <div className="flex flex-col my-5">
           {category &&
             category.map((value) => (
@@ -87,9 +95,21 @@ function Filter() {
                 } text-gray-500 cursor-pointer mb-8 font-medium`}
                 onClick={() => filterCategory(value, "category")}
               >
-                {value}
+                {value.toUpperCase()}
               </p>
             ))}
+        </div>
+      </div>
+      <div className="mb-4 pr-10">
+        <h2 className="font-bold text-base text-gray-600">Price</h2>
+        <div className="flex flex-col my-5">
+          <InputRange
+            maxValue={priceMax}
+            minValue={0}
+            value={price}
+            formatLabel={(value) => `₹ ${value}`}
+            onChange={priceFilter}
+          />
         </div>
       </div>
     </div>

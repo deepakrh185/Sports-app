@@ -7,7 +7,7 @@ function FilteredProducts() {
   return (
     <>
       {products && (
-        <p className="mb-4 font-bold text-xl text-gray-500">
+        <p className="mb-4 font-bold text-xl text-gray-500 justify-center flex">
           {products.length} Products Found..!
         </p>
       )}
