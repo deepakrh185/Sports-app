@@ -12,13 +12,13 @@
       {
         "img": "https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/ball/t/p/w/350-390-4-spikester-encounter-niviavb494-volleyball-nivia-original-imagyddfsv375uv8.jpeg?q=70"
       },
-     
 
       {
         "img": "https://rukminim1.flixcart.com/image/416/416/kj36ky80-0/ball/z/a/q/439-spikesters-encounter-4-21-1-vb-494-volleyball-nivia-original-imafyq7ytdzm7me7.jpeg?q=70"
       }
     ],
-    "price": "532"
+    "price": "532",
+    "category": "volleyBall"
   },
   {
     "id": "1",
@@ -37,6 +37,7 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kbfeljk0/ball/t/4/t/260-280-21-premier-volleyball-4-1-na-volleyball-cosco-original-imafsrhzdru7tguz.jpeg?q=70"
       }
     ],
+    "category": "volleyBall",
     "price": "896"
   },
   {
@@ -62,6 +63,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kctf0cw0/racquet/w/u/b/g3-8-89-cm-gr-303-f-strung-1-na-95-badminton-racquet-yonex-original-imaftuvfck3ccmhn.jpeg?q=70"
       }
     ],
+    "category": "badminton",
+
     "price": "840"
   },
   {
@@ -88,6 +91,7 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/k80iqa80/racquet/f/v/k/g4-8-25-cm-turbo-x-80-ii-strung-1-aypm098-5-86-badminton-racquet-original-imafqy2xuzzdgvsn.jpeg?q=70"
       }
     ],
+    "category": "badminton",
     "price": "550"
   },
   {
@@ -108,6 +112,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kbs9k7k0/bat/u/b/3/900-1100-6-poplar-willow-bat-900-1100gm-premium-green-sspremium-original-imaft2yyhtdgursz.jpeg?q=70"
       }
     ],
+    "category": "cricket",
+
     "price": "649"
   },
   {
@@ -131,6 +137,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kjkbv680-0/ball/f/p/r/300-340-blade-machine-stitched-football-20-3-1-1020yl-football-original-imafz3tbvhapvsbg.jpeg?q=70"
       }
     ],
+    "category": "football",
+
     "price": "499"
   },
   {
@@ -154,6 +162,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jex4yvk0/ball/u/g/r/200-400-6-8-shining-star-2022-1-fb-293-football-nivia-original-imaet2crrn2bhdmn.jpeg?q=70"
       }
     ],
+    "category": "football",
+
     "price": "749"
   },
   {
@@ -175,6 +185,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jevpj0w0/ball/h/x/f/250-300-final-6-ms-trainer-8-65-1-8291204-football-puma-original-imaf3dwvufzgejgj.jpeg?q=70"
       }
     ],
+    "category": "football",
+
     "price": "799"
   },
   {
@@ -195,6 +207,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jfikknk0/racquet/w/v/r/5-star-table-tennis-racquet-355-166-table-tennis-racquet-stag-original-imaeuuukc2zh8dmw.jpeg?q=70"
       }
     ],
+    "category": "tableTennis",
+
     "price": "909"
   },
   {
@@ -216,6 +230,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jgwkzgw0/kit/t/h/b/tournament-playset-with-2-bats-3-seam-balls-tour-set-stag-original-imaf5ffecpmh6mza.jpeg?q=70"
       }
     ],
+    "category": "tableTennis",
+
     "price": "839"
   },
   {
@@ -239,6 +255,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/k2m6ufk0/bat/q/a/r/1160-1220-short-handle-sikander-1000-cb-1149-sh-spartan-original-imafkfvahbp7scbx.jpeg?q=70"
       }
     ],
+    "category": "cricket",
+
     "price": "939"
   },
   {
@@ -262,6 +280,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jucz98w0/ball/q/u/9/150-170-standard-7-1-adrenex-maestro-leather-ball-white-1-original-imaffgcysgkyeeua.jpeg?q=70"
       }
     ],
+    "category": "cricket",
+
     "price": "779"
   },
   {
@@ -282,6 +302,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kc6jyq80/bat/9/6/f/1-2-short-handle-kashmir-popler-cricket-bat-98758797-lark-original-imafgygb6sck3tzz.jpeg?q=70"
       }
     ],
+    "category": "cricket",
+
     "price": "489"
   },
   {
@@ -305,6 +327,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jrs3mvk0/sport-glove/h/k/z/left-right-l-practice-wicket-keeping-gloves-combo-with-inner-original-imafdgwkmazefzza.jpeg?q=70"
       }
     ],
+    "category": "cricket",
+
     "price": "469"
   },
   {
@@ -322,6 +346,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jlzhci80/net/h/r/v/one-side-tape-practice-117g-rixen-original-imaf9yyqdxhbaz3f.jpeg?q=70"
       }
     ],
+    "category": "volleyball",
+
     "price": "599"
   },
   {
@@ -345,6 +371,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/k3j1z0w0/board-game/4/a/t/magnetic-educational-toys-travel-chess-set-with-folding-board-original-imaf7um3xesbcnfc.jpeg?q=70"
       }
     ],
+    "category": "chess",
+
     "price": "399"
   },
   {
@@ -368,6 +396,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/jox7xjk0/kit/q/p/d/peak-table-tennis-1-racquet-1-cover-perform-40-3-ball-na-stiga-original-imafb6pepeau7wgf.jpeg?q=70"
       }
     ],
+    "category": "tableTennis",
+
     "price": "939"
   },
   {
@@ -391,6 +421,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kg5fzww0/board/x/g/g/ch-dq-12-1-1-palm-royal-handicrafts-original-imafwg2fqjqdgdku.jpeg?q=70"
       }
     ],
+    "category": "chess",
+
     "price": "999"
   },
   {
@@ -417,6 +449,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/juu4jgw0/board/e/q/n/foldable-chess-mat-board-game-1-kidducollections-original-imaffr7hh8nzzymg.jpeg?q=70"
       }
     ],
+    "category": "chess",
+
     "price": "599"
   },
   {
@@ -443,6 +477,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/kdkkdjk0/shuttle/g/h/r/mavis-200i-green-cap-6-75-nylon-yonex-slow-original-imafug3vfckbpuru.jpeg?q=70"
       }
     ],
+    "category": "badminton",
+
     "price": "399"
   },
   {
@@ -466,6 +502,8 @@
         "img": "https://rukminim1.flixcart.com/image/416/416/k8et4sw0/racquet/g/b/k/g4-8-25-cm-turbo-x-80-ii-strung-1-aypm096-5-86-badminton-racquet-original-imafqfz8k5yakuaj.jpeg?q=70"
       }
     ],
+    "category": "badminton",
+
     "price": "899"
   }
 ]
