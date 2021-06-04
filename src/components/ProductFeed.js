@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Products from "./Products";
 
-function ProductFeed({ product }) {
+function ProductFeed({ products }) {
   return (
     <div className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto ">
-      {product.map((pro) => (
+      {products.map((pro) => (
         <Products
+          product={products}
           title={pro.title}
           image={pro.image}
           images={pro.images}

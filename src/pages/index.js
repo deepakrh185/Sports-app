@@ -5,7 +5,6 @@ import fs from "fs/promises";
 import path from "path";
 
 export default function Home({ product }) {
-  console.log(product);
   return (
     <div className="bg-gray-100">
       <Head>
@@ -13,7 +12,7 @@ export default function Home({ product }) {
       </Head>
       <Header />
       <main className="max-w-screen-2xl mx-auto  ">
-        <ProductFeed product={product} />
+        <ProductFeed products={product} />
       </main>
     </div>
   );

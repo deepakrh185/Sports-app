@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   items: [],
+  product: null,
+  filteredProduct: null,
 };
 
 export const basketSlice = createSlice({
@@ -10,6 +12,13 @@ export const basketSlice = createSlice({
   reducers: {
     addToBasket: (state, action) => {
       state.items = [...state.items, action.payload];
+    },
+    addProduct: (state, action) => {
+      state.product = action.payload;
+      state.filteredProduct = action.payload;
+    },
+    updateFilter: (state, action) => {
+      state.filteredProduct = action.payload;
     },
     removeFromBasket: (state, action) => {},
     updateQuantity: (state, action) => {
@@ -33,10 +42,17 @@ export const basketSlice = createSlice({
   },
 });
 
-export const { addToBasket, removeFromBasket, updateQuantity } =
-  basketSlice.actions;
+export const {
+  addToBasket,
+  removeFromBasket,
+  updateQuantity,
+  addProduct,
+  updateFilter,
+} = basketSlice.actions;
 
 // Selectors - This is how we pull information from the Global store slice
 export const selectItems = (state) => state.basket.items;
+export const selectProduct = (state) => state.basket.product;
+export const selectFilteredProducts = (state) => state.basket.filteredProduct;
 
 export default basketSlice.reducer;
