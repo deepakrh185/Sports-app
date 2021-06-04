@@ -8,6 +8,7 @@ function ProductFeed({ product }) {
         <Products
           title={pro.title}
           image={pro.image}
+          images={pro.images}
           description={pro.description}
           price={pro.price}
           key={pro.key}

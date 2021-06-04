@@ -49,6 +49,13 @@ function Detail({ product }) {
     setAdded(true);
     setTimeout(() => setAdded(false), 3000);
   };
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <>
       <Head>
@@ -124,9 +131,9 @@ function Detail({ product }) {
                       key={image.id}
                     >
                       <Image
+                        width={200}
+                        height={200}
                         src={image.img}
-                        width={100}
-                        height={100}
                         objectFit="contain"
                         className="rounded-md "
                       />
@@ -135,10 +142,10 @@ function Detail({ product }) {
               </div>
             </div>
             <div className="px-5 mb-10 w-full md:w-5/12 bg-white">
-              <h1 className="lg:my-2 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-400 mb-7">
+              <h1 className="lg:my-2 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-400 ">
                 {title}
               </h1>
-              <div className="flex items-center text-center mb-4">
+              <div className="flex items-center text-center mb-4 mt-10">
                 <h4 className="text-xl flex">Rating : </h4>&nbsp;
                 <span className="my-1 flex items-center justify-center align-center text-xl px-1 rounded-md bg-green-400 flex-shrink w-16  text-white ring-current py-1 ">
                   {rating}

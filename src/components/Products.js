@@ -3,9 +3,10 @@ import Image from "next/image";
 import Tilt from "react-tilt";
 import { StarIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
-function Products({ id, title, description, image, price }) {
+function Products({ id, title, description, image, price, images }) {
   const router = useRouter();
   const MAX_RATING = 4;
   const MIN_RATING = 2.5;
@@ -21,9 +22,26 @@ function Products({ id, title, description, image, price }) {
   return (
     <main className="bg-green-200 p-4 m-5 rounded-md">
       <Tilt className="flex flex-col m-2 p-6 z-30  bg-white rounded-2xl  Tilt object-contain">
-        <Image src={image} width="200" height="200" objectFit="contain" />
+        <Carousel
+          infiniteLoop
+          showStatus={false}
+          showIndicators={false}
+          showThumbs={false}
+          stopOnHover={false}
+          showArrows={true}
+        >
+          {images &&
+            images.map((image) => (
+              <Image
+                src={image.img}
+                width="200"
+                height="200"
+                objectFit="contain"
+              />
+            ))}
+        </Carousel>
         <p
-          className="hover:underline cursor-pointer mt-2"
+          className="hover:underline cursor-pointer mt-2 "
           onClick={() => router.push(`/product/${id}`)}
         >
           {title}
