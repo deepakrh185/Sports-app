@@ -113,7 +113,7 @@ function Detail({ product }) {
             <div className="px-5 mb-7 w-full md:w-7/12 ">
               <div className="w-full mb-4 mt-14 p-2">
                 {imageBounce === "bounce" && (
-                  <div className="items-center flex justify-center sm:hidden lg:flex md:flex">
+                  <div className="items-center flex justify-center hidden sm:hidden lg:flex md:flex">
                     <img
                       src={sideImage}
                       objectFit="contain"
@@ -164,9 +164,9 @@ function Detail({ product }) {
               showStatus={true}
               showIndicators={true}
               showThumbs={false}
-              stopOnHover={false}
+              stopOnHover={true}
               showArrows={true}
-              className="lg:hidden md:hidden sm:flex flex justify-center items-center mb-6 -mt-12 -p-2"
+              className="lg:hidden md:hidden sm:flex flex justify-center items-center mb-6 -mt-20  "
             >
               {images &&
                 images.map((image) => (
