@@ -4,9 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/Product.module.css";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
+import { useRouter } from "next/router";
 
 function Filter() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("All");
   const [lastChange, setLastChange] = useState(null);
   const [price, setPrice] = useState(0);
@@ -26,6 +28,7 @@ function Filter() {
     if (item === "category") {
       setActiveCategory(value);
       setLastChange("category");
+      router.push(`/FilterProduct/${value}`);
     }
     const filtered =
       value != "All"

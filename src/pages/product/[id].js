@@ -74,7 +74,7 @@ function Detail({ product }) {
           Filter
         </button>
       </div>
-      <div className="bg-gray-200 lg:p-6 md:p-6 p-4">
+      <div className="bg-gray-200 lg:p-6 md:p-6 p-2">
         <div className="max-w-screen-xl mx-auto">
           <span className="font-medium">
             <Link href="/">Home</Link>
@@ -107,11 +107,11 @@ function Detail({ product }) {
           )}
         </div>
       </div>
-      <div className="bg-green-200 block place-items-center lg:p-10 md:p-10">
+      <div className="bg-green-200 block place-items-center lg:p-14 md:p-12">
         <main className="max-w-screen-xl m-auto bg-white rounded-lg ">
           <div className="flex flex-wrap ">
             <div className="px-5 mb-7 w-full md:w-7/12 ">
-              <div className="w-full mb-4 mt-14 p-2">
+              <div className="w-full mb-4 mt-14 lg:p-6  md:p-6">
                 {imageBounce === "bounce" && (
                   <div className="items-center flex justify-center hidden sm:hidden lg:flex md:flex">
                     <img
@@ -166,7 +166,7 @@ function Detail({ product }) {
               showThumbs={false}
               stopOnHover={true}
               showArrows={true}
-              className="lg:hidden md:hidden sm:flex flex justify-center items-center mb-6 -mt-20  "
+              className="lg:hidden md:hidden sm:flex flex justify-center items-center mb-6 -mt-20  p-1"
             >
               {images &&
                 images.map((image) => (
