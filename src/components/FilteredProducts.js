@@ -7,7 +7,7 @@ function FilteredProducts() {
   const products = useSelector(selectFilteredProducts);
   return (
     <>
-      {products.length > 0 ? (
+      {products?.length > 0 ? (
         <p className="mb-4 font-bold text-xl text-gray-500 justify-center flex">
           {products.length} Products Found..!
         </p>

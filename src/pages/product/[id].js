@@ -7,12 +7,20 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../slices/basketSlice";
 import Head from "next/head";
-import { StarIcon, CheckCircleIcon } from "@heroicons/react/outline";
+import {
+  StarIcon,
+  CheckCircleIcon,
+  FilterIcon,
+} from "@heroicons/react/outline";
 import QuantityCount from "../../components/QuantityCount";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import styles from "../../styles/Product.module.css";
+import { useRouter } from "next/router";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 function Detail({ product }) {
+  const router = useRouter();
   const { title, price, description, image, images, imageBounce } = product;
   const [sideImage, setSideImage] = useState(images[0].img);
   const [quantity, setQuantity] = useState(1);
@@ -50,21 +58,23 @@ function Detail({ product }) {
     setAdded(true);
     setTimeout(() => setAdded(false), 3000);
   };
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+
   return (
     <>
       <Head>
         <title>{title} | Amazon</title>
       </Head>
       <Header />
-
-      <div className="bg-gray-100 lg:p-6 md:p-6 p-4">
+      <div
+        className="w-full bg-gray-800 items-center flex justify-center p-4 lg:hidden md:hidden "
+        onClick={() => router.push("/product")}
+      >
+        <FilterIcon className="h-5 text-white mr-2" />
+        <button className="font-medium text-white focus:outline-none font-serif text-xl">
+          Filter
+        </button>
+      </div>
+      <div className="bg-gray-200 lg:p-6 md:p-6 p-4">
         <div className="max-w-screen-xl mx-auto">
           <span className="font-medium">
             <Link href="/">Home</Link>
@@ -76,6 +86,7 @@ function Detail({ product }) {
           / <span className="text-green-600">{title}</span>
         </div>
       </div>
+
       <div
         className="relative "
         style={{ position: "sticky", top: 100, zIndex: 50 }}
@@ -99,10 +110,10 @@ function Detail({ product }) {
       <div className="bg-green-200 block place-items-center lg:p-10 md:p-10">
         <main className="max-w-screen-xl m-auto bg-white rounded-lg ">
           <div className="flex flex-wrap ">
-            <div className="px-5 mb-7 w-full md:w-7/12">
-              <div className="w-full mb-4 mt-14 p-8">
+            <div className="px-5 mb-7 w-full md:w-7/12 ">
+              <div className="w-full mb-4 mt-14 p-2">
                 {imageBounce === "bounce" && (
-                  <div className="items-center flex justify-center ">
+                  <div className="items-center flex justify-center sm:hidden lg:flex md:flex">
                     <img
                       src={sideImage}
                       objectFit="contain"
@@ -111,7 +122,7 @@ function Detail({ product }) {
                   </div>
                 )}
                 {imageBounce === "nbounce" && (
-                  <div className="items-center flex justify-center ">
+                  <div className="items-center flex justify-center hidden sm:hidden lg:flex md:flex">
                     <Image
                       src={sideImage}
                       height={500}
@@ -127,7 +138,7 @@ function Detail({ product }) {
                 {images &&
                   images.map((image) => (
                     <div
-                      className={` rounded-lg lg:p-1 md:p-1 mt-2 flex w-full p-1 hover:bg-green-400   ${styles.product_image_wrapper}`}
+                      className={` rounded-lg lg:p-1 md:p-1 mt-2 flex w-full p-1 hover:bg-green-400 hidden sm:hidden lg:flex md:flex  ${styles.product_image_wrapper}`}
                       onClick={() => setSideImage(image.img)}
                       key={image.id}
                     >
@@ -146,6 +157,30 @@ function Detail({ product }) {
                   ))}
               </div>
             </div>
+            <Carousel
+              autoPlay
+              setInterval={1000}
+              infiniteLoop
+              showStatus={true}
+              showIndicators={true}
+              showThumbs={false}
+              stopOnHover={false}
+              showArrows={true}
+              className="lg:hidden md:hidden sm:flex flex justify-center items-center mb-6 -mt-12 -p-2"
+            >
+              {images &&
+                images.map((image) => (
+                  <div onClick={() => setSideImage(image.img)} key={image.id}>
+                    <Image
+                      width={400}
+                      height={600}
+                      src={image.img}
+                      objectFit="contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+            </Carousel>
             <div className="px-6 mb-10 w-full md:w-5/12 bg-white">
               <h1 className="lg:my-6 md:my-6 lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-green-500 ">
                 {title}
