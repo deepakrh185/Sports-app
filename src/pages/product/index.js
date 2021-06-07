@@ -21,7 +21,7 @@ function Product({ product }) {
           <div className="md:w-3/12 w-full mb-5 px-5">
             <Filter />
           </div>
-          <div className="md:w-9/12 w-full mb-5 px-5 hidden sm:flex">
+          <div className="md:w-9/12 w-full mb-5 px-5 hidden sm:flex ">
             <FilteredProducts />
           </div>
         </div>

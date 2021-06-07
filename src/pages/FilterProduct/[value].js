@@ -1,22 +1,46 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectFilteredProducts } from "../../slices/basketSlice";
 import Image from "next/image";
-import { useState } from "react";
 import Tilt from "react-tilt";
 import { StarIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Header from "../../components/Header";
+import { useState, useEffect } from "react";
+import { selectProduct, updateFilter } from "../../slices/basketSlice";
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/index.css";
 
 function Value() {
+  const [price, setPrice] = useState(0);
+  const [priceMax, setPriceMax] = useState(1);
+  const all_products = useSelector(selectProduct);
   const products = useSelector(selectFilteredProducts);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const max = products
+      ?.map((product) => product?.price)
+      .reduce((a, b) => Math.max(a, b));
+    setPriceMax(max);
+    setPrice(max);
+  }, [products]);
+
+  const priceFilter = (value) => {
+    setPrice(value);
+    const filtered = products?.filter((product) => product.price <= value);
+    dispatch(updateFilter(filtered));
+  };
   console.log(products);
   const router = useRouter();
 
   return (
     <>
+      <Header />
       {products?.length > 0 ? (
-        <p className="mb-4 font-bold text-xl text-gray-500 justify-center flex">
+        <p className="mb-4 mt-2 font-bold text-xl text-gray-500 justify-center flex">
           {products.length} Products Found..!
         </p>
       ) : (

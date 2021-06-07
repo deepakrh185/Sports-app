@@ -13,6 +13,7 @@ function Filter() {
   const [lastChange, setLastChange] = useState(null);
   const [price, setPrice] = useState(0);
   const [priceMax, setPriceMax] = useState(1);
+  
   const all_products = useSelector(selectProduct);
 
   const getUniqueValues = (data, type) => {
@@ -28,7 +29,7 @@ function Filter() {
     if (item === "category") {
       setActiveCategory(value);
       setLastChange("category");
-      router.push(`/FilterProduct/${value}`);
+      //router.push(`/FilterProduct/${value}`);
     }
     const filtered =
       value != "All"
@@ -85,25 +86,27 @@ function Filter() {
   };
 
   return (
-    <div className="flex flex-col mt-10">
-      <div className="mb-4">
-        <h1 className="font-bold text-3xl text-black ">Category</h1>
-        <div className="flex flex-col my-5">
-          {category &&
-            category.map((value) => (
-              <p
-                key={value}
-                className={`${
-                  value == activeCategory && styles.active_filter
-                } text-gray-500 cursor-pointer mb-8 font-medium`}
-                onClick={() => filterCategory(value, "category")}
-              >
-                {value.toUpperCase()}
-              </p>
-            ))}
+    <>
+      <div className="flex flex-col mt-10 items-center justify-center">
+        <div className="mb-4">
+          <h1 className="font-bold text-3xl text-black ">Category</h1>
+          <div className="flex flex-col my-5 justify-center items-center">
+            {category &&
+              category.map((value) => (
+                <p
+                  key={value}
+                  className={`${
+                    value == activeCategory && styles.active_filter
+                  } text-gray-500 cursor-pointer mb-8 font-medium`}
+                  onClick={() => filterCategory(value, "category")}
+                >
+                  {value.toUpperCase()}
+                </p>
+              ))}
+          </div>
         </div>
       </div>
-      <div className="mb-4 pr-10">
+      <div className="mb-4 pr-10 hidden sm:block lg:block">
         <h2 className="font-bold text-lg text-black">Price</h2>
         <div className="flex flex-col my-5">
           <InputRange
@@ -115,7 +118,7 @@ function Filter() {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
