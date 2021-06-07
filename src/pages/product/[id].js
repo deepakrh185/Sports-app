@@ -66,7 +66,7 @@ function Detail({ product }) {
       </Head>
       <Header />
       <div
-        className="w-full bg-gray-800 items-center flex justify-center p-4 lg:hidden md:hidden "
+        className="w-full bg-gray-800 items-center rounded-bl-lg rounded-br-lg flex justify-center p-4 lg:hidden md:hidden "
         onClick={() => router.push("/product")}
       >
         <FilterIcon className="h-5 text-white mr-2" />
@@ -74,7 +74,7 @@ function Detail({ product }) {
           Filter
         </button>
       </div>
-      <div className="bg-gray-200 lg:p-6 md:p-6 p-2">
+      <div className="bg-gray-200 lg:p-6 md:p-6 p-4">
         <div className="max-w-screen-xl mx-auto">
           <span className="font-medium">
             <Link href="/">Home</Link>

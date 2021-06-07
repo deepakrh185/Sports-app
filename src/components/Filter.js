@@ -89,11 +89,13 @@ function Filter() {
   return (
     <>
       <div
-        className="flex flex-col mt-10 items-center justify-center hidden sm:hidden lg:block md:block md:px-16"
-        style={{ position: "sticky", top: 112 }}
+        className="flex flex-col mt-10 items-center justify-center hidden sm:hidden lg:block md:block md:px-16 "
+        style={{ position: "sticky", top: 100 }}
       >
         <div className="mb-4 items-center text-center 2xl:mt-8">
-          <h1 className="font-bold text-3xl text-black ">Category</h1>
+          <h1 className="font-bold text-3xl text-black items-center text-center">
+            Category
+          </h1>
           <div className="flex flex-col my-5 justify-center items-center md:px-16">
             {category &&
               category.map((value) => (
@@ -122,19 +124,21 @@ function Filter() {
       </div>
       <div>
         <div
-          className="w-full bg-gray-800 items-center flex justify-center p-4 lg:hidden md:hidden "
+          className="w-screen bg-gray-800 rounded-bl-lg rounded-br-lg items-center flex justify-center p-4 lg:hidden md:hidden text-center "
           onClick={() => setShowCart(true)}
         >
           <FilterIcon className="h-5 text-white mr-2" />
-          <button className="font-medium text-white focus:outline-none font-serif text-xl">
+          <button className=" my-1 font-medium text-white  focus:outline-none font-serif text-xl">
             Filter
           </button>
         </div>
         {showCart && (
-          <div className="fixed w-full h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex">
-            <div className="relative z-30 w-64 bg-white h-screen flex flex-col">
-              <div className="text-white bg-amazon_blue py-3 px-3 text-center flex items-center justify-center">
-                <h1 className="font-bold text-3xl text-white ">Category</h1>
+          <div className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex ">
+            <div className="relative z-30 w-80 bg-white h-screen flex flex-col">
+              <div className="text-white bg-amazon_blue py-3 text-center flex items-center justify-center">
+                <h1 className="font-bold text-3xl text-white font-serif p-2">
+                  Category
+                </h1>
                 <span className="font-medium ml-4"></span>
               </div>
               <div className="flex-grow bg-gray-50">
@@ -152,8 +156,10 @@ function Filter() {
                       </p>
                     ))}
                 </div>
-                <h2 className="font-bold text-lg text-black">Price</h2>
-                <div className="flex flex-col my-5">
+                <h2 className="font-bold text-lg text-black items-center text-center">
+                  Price
+                </h2>
+                <div className="flex flex-col my-5 px-8">
                   <InputRange
                     maxValue={priceMax}
                     minValue={0}

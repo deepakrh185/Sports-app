@@ -16,12 +16,12 @@ function Product({ product }) {
   return (
     <div>
       <Header />
-      <main className="max-w-screen-xl mx-auto mt-5">
-        <div className="flex flex-col md:flex-row">
-          <div className="md:w-3/12 w-full mb-5 px-5 " >
+      <main className="max-w-screen-4xl  lg:mt-5 md:mt-5 items-center flex ">
+        <div className="flex flex-col md:flex-row  md:m-4 ">
+          <div className="md:w-3/12  w-full mb-5">
             <Filter />
           </div>
-          <div className="md:w-9/12 w-full mb-5 px-5 md:px-16">
+          <div className="md:w-9/12 w-full md:px-16">
             <FilteredProducts />
           </div>
         </div>

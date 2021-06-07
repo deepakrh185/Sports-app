@@ -12,7 +12,7 @@ function FilteredProducts() {
           <p className="mb-4 font-bold text-xl text-gray-500 ">
             {products.length} Products Found..!
           </p>
-          <div className="grid grid-flow-row-dense md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3">
+          <div className="grid grid-flow-row-dense md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 ">
             {!!products?.length &&
               products.map((product) => (
                 <Product
@@ -25,11 +25,11 @@ function FilteredProducts() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col ml-52">
+        <div className="flex flex-col md:ml-32 lg:ml-52 items-center ">
           <p className="font-bold text-xl text-gray-500 grid place-content-center">
             Products Not Found..!
           </p>
-          <div className="flex justify-center flex-wrap mt-12">
+          <div className="flex justify-center flex-wrap mt-12 ">
             <Image
               src="/notFound2.png"
               width={500}

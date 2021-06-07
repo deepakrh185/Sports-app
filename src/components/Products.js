@@ -20,7 +20,7 @@ function Products({ id, title, description, price, images }) {
   );
 
   return (
-    <main className="bg-green-200 p-4 m-5 rounded-md">
+    <main className="bg-green-200 p-4 m-4 rounded-md ">
       <Tilt className="flex flex-col m-2 p-6 z-30  bg-white rounded-2xl  Tilt object-contain">
         <Carousel
           infiniteLoop
