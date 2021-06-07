@@ -12,7 +12,7 @@ function FilteredProducts() {
           <p className="mb-4 font-bold text-xl text-gray-500 ">
             {products.length} Products Found..!
           </p>
-          <div className="grid grid-flow-row-dense md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-flow-row-dense md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3">
             {!!products?.length &&
               products.map((product) => (
                 <Product

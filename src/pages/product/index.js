@@ -18,10 +18,10 @@ function Product({ product }) {
       <Header />
       <main className="max-w-screen-xl mx-auto mt-5">
         <div className="flex flex-col md:flex-row">
-          <div className="md:w-3/12 w-full mb-5 px-5">
+          <div className="md:w-3/12 w-full mb-5 px-5 " >
             <Filter />
           </div>
-          <div className="md:w-9/12 w-full mb-5 px-5 hidden sm:flex ">
+          <div className="md:w-9/12 w-full mb-5 px-5 md:px-16">
             <FilteredProducts />
           </div>
         </div>

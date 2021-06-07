@@ -88,3 +88,9 @@
   border-bottom: 2px solid rgb(45, 216, 102);
   width: fit-content;
 }
+
+@media (max-width: 640px) {
+  .active_hidden {
+    display: none;
+  }
+}
