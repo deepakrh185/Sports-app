@@ -8,10 +8,13 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import { useRouter } from "next/router";
+import { useUser } from "../../firebase/useUser";
 
 function Header() {
+  const { user, logout } = useUser();
   const router = useRouter();
   const items = useSelector(selectItems);
+
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
       <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
@@ -33,10 +36,10 @@ function Header() {
           <SearchIcon className="h-12 p-4" />
         </div>
         <div className="text-white flex items-center text-sm space-x-6 mx-2 whitespace-nowrap cursor-pointer ">
-          <div className="link flex">
+          <div className="link flex" onClick={() => router.push("/auth")}>
             <UserIcon className="h-6" />
             <p className=" link font-bold ml-2 sm:inline mt-1 text-xs">
-              Sign In
+              {user ? `${user.name}` : "Sign In"}
             </p>
           </div>
           <div className="link flex">

@@ -9,13 +9,11 @@ import { FilterIcon } from "@heroicons/react/solid";
 
 function Filter() {
   const dispatch = useDispatch();
-  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("All");
   const [lastChange, setLastChange] = useState(null);
   const [price, setPrice] = useState(0);
   const [priceMax, setPriceMax] = useState(1);
-  const [routeEnable, setRouteEnable] = useState(true);
-  const [showCart, setShowCart] = useState(false);
+  const [showCart, setShowCart] = useState(true);
 
   const all_products = useSelector(selectProduct);
   const getUniqueValues = (data, type) => {
@@ -134,7 +132,7 @@ function Filter() {
         </div>
         {showCart && (
           <div className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex ">
-            <div className="relative z-30 w-80 bg-white h-screen flex flex-col">
+            <div className="relative z-30 w-64 bg-white h-screen flex flex-col">
               <div className="text-white bg-amazon_blue py-3 text-center flex items-center justify-center">
                 <h1 className="font-bold text-3xl text-white font-serif p-2">
                   Category
@@ -142,7 +140,7 @@ function Filter() {
                 <span className="font-medium ml-4"></span>
               </div>
               <div className="flex-grow bg-gray-50">
-                <div className="flex flex-col my-5 justify-center items-center">
+                <div className="flex flex-col my-5 justify-center items-center mt-12">
                   {category &&
                     category.map((value) => (
                       <p
@@ -168,12 +166,6 @@ function Filter() {
                     onChange={priceFilter}
                   />
                 </div>
-              </div>
-              <div className="p-3 border-t-2 border-gray-100">
-                <button
-                  className="w-full button"
-                  onClick={() => router.push("/checkout")}
-                ></button>
               </div>
             </div>
             <div

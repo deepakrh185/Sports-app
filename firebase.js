@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAeT2ksG_enM1ZlF8_HS5OnzISdIjF3lKQ",
   authDomain: "sports-7e962.firebaseapp.com",
@@ -14,4 +16,4 @@ const app = !firebase.apps.length
 
 const db = app.firestore();
 
-export default db;
+export default firebaseConfig;
