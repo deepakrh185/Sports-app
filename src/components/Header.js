@@ -3,6 +3,7 @@ import {
   ShoppingBagIcon,
   BriefcaseIcon,
   UserIcon,
+  LogoutIcon,
 } from "@heroicons/react/outline";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -48,10 +49,19 @@ function Header() {
               Your Orders
             </p>
           </div>
+          {user && (
+            <div className="link flex" onClick={() => logout()}>
+              <LogoutIcon className="h-6" />
+              <p className="link font-bold ml-2 sm:inline  mt-1 text-xs ">
+                Logout
+              </p>
+            </div>
+          )}
           <div className="relative flex items-center flex-shrink">
             <span className="absolute top-0 right-0 left-4 md:right-10 sm:right-10 h-4 w-4 bg-green-300 text-center rounded-full text-black font-bold  text-xs">
               {items.length}
             </span>
+
             <ShoppingBagIcon className="h-6" />
             <p className="link font-bold  text-xs ml-2 mt-1 md:mr-2 lg:mr-52 sm:mr-2 hidden sm:inline">
               Cart
