@@ -10,28 +10,56 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import { useRouter } from "next/router";
 import { useUser } from "../../firebase/useUser";
+import { useState } from "react";
 
 function Header() {
   const { user, logout } = useUser();
   const router = useRouter();
+  const [showMenu, setShowMenu] = useState(false);
+
   const items = useSelector(selectItems);
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
       <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
-        <div className="h-100  flex-col items-center justify-center py-10 cursor-pointer lg:hidden md:hidden sm:hidden">
+        <div
+          className="h-100  flex-col items-center justify-center py-10 cursor-pointer lg:hidden md:hidden sm:hidden"
+          onClick={() => setShowMenu(true)}
+        >
           <div>
             <p className="w-10 h-1 bg-white mb-1"></p>
             <p className="w-10 h-1 bg-white mb-1"></p>
             <p className="w-10 h-1 bg-white mb-1"></p>
           </div>
         </div>
-        <div className="flex items-center flex-grow sm:flex-grow-0 md:ml-2 lg:ml-12 ml-2 mt-1">
+        {showMenu && (
+          <div
+            className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex "
+            onClick={() => setShowMenu(false)}
+          >
+            <div className="relative z-30 w-64 bg-white h-screen flex flex-col">
+              <div className="text-white bg-amazon_blue py-3 text-center flex items-center justify-center">
+                <h1 className="font-bold text-3xl text-white font-serif p-2">
+                  Category
+                </h1>
+                <span className="font-medium ml-4"></span>
+              </div>
+              <div className="flex-grow bg-gray-50">
+                <div className="flex flex-col my-5 justify-center items-center mt-12"></div>
+                <h2 className="font-bold text-lg text-black items-center text-center">
+                  Price
+                </h2>
+              </div>
+            </div>
+            <div className="w-full h-screen bg-gray-900 bg-opacity-60 fixed top-0 right-0 z-10" />
+          </div>
+        )}
+        <div className="flex items-center  flex-grow sm:flex-grow-0 md:ml-2 lg:ml-12 ml-2 mt-1">
           <Image
             src="/logo.png"
             width={100}
             height={80}
-            className="cursor-pointer"
+            className="cursor-pointer "
             objectFit="contain"
             onClick={() => router.push("/")}
           />
