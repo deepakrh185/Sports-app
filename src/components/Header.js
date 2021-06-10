@@ -5,6 +5,7 @@ import {
   UserIcon,
   LogoutIcon,
 } from "@heroicons/react/outline";
+import { MenuIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
@@ -21,39 +22,58 @@ function Header() {
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
-      <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
+      {showMenu && (
         <div
-          className="h-100  flex-col items-center justify-center py-10 cursor-pointer lg:hidden md:hidden sm:hidden"
+          className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex   "
+          onClick={() => setShowMenu(false)}
+        >
+          <div className="relative z-30 w-80 sm:w-96 bg-white h-screen flex flex-col">
+            <div className="flex items-center">
+              <Image
+                src="/download.png"
+                width={300}
+                height={100}
+                className="cursor-pointer "
+                objectFit="contain"
+                onClick={() => router.push("/")}
+              />
+            </div>
+            <div className="text-white flex flex-col ml-6 mt-6  whitespace-nowrap cursor-pointer ">
+              <div
+                className="link flex text-gray-500 items-center"
+                onClick={() => router.push("/auth")}
+              >
+                <UserIcon className="h-6 text-gray-500 mr-1" />
+                <p className=" link font-bold text-base">
+                  {user ? `${user.name}` : "Sign In"}
+                </p>
+              </div>
+              <div className="link flex  text-gray-500 mt-6 items-center">
+                <BriefcaseIcon className="h-6 text-gray-500 mr-1" />
+                <p className="link font-bold  text-base">Your Orders</p>
+              </div>
+              {user && (
+                <div
+                  className="link flex  text-gray-500 items-center mt-6"
+                  onClick={() => logout()}
+                >
+                  <LogoutIcon className="h-6 text-gray-500 mr-1" />
+                  <p className="link font-bold  text-base ">Logout</p>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="w-full h-screen bg-gray-900 bg-opacity-60 fixed top-0 right-0 z-10" />
+        </div>
+      )}
+      <div className="flex items-center justify-center bg-green-600  lg:p-0 md:p-0 sm:p-0">
+        <div
+          className="cursor-pointer lg:hidden md:hidden sm:hidden "
           onClick={() => setShowMenu(true)}
         >
-          <div>
-            <p className="w-10 h-1 bg-white mb-1"></p>
-            <p className="w-10 h-1 bg-white mb-1"></p>
-            <p className="w-10 h-1 bg-white mb-1"></p>
-          </div>
+          <MenuIcon className=" text-white ml-4 h-8 w-7" />
         </div>
-        {showMenu && (
-          <div
-            className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex "
-            onClick={() => setShowMenu(false)}
-          >
-            <div className="relative z-30 w-64 bg-white h-screen flex flex-col">
-              <div className="text-white bg-amazon_blue py-3 text-center flex items-center justify-center">
-                <h1 className="font-bold text-3xl text-white font-serif p-2">
-                  Category
-                </h1>
-                <span className="font-medium ml-4"></span>
-              </div>
-              <div className="flex-grow bg-gray-50">
-                <div className="flex flex-col my-5 justify-center items-center mt-12"></div>
-                <h2 className="font-bold text-lg text-black items-center text-center">
-                  Price
-                </h2>
-              </div>
-            </div>
-            <div className="w-full h-screen bg-gray-900 bg-opacity-60 fixed top-0 right-0 z-10" />
-          </div>
-        )}
+
         <div className="flex items-center  flex-grow sm:flex-grow-0 md:ml-2 lg:ml-12 ml-2 mt-1">
           <Image
             src="/logo.png"

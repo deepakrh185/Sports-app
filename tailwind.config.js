@@ -7,6 +7,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: (theme) => ({
+        "socialMedia":
+          "url('https://wallpapers-hub.art/wallpaper-images/19611.jpg')",
+      }), 
       colors: {
         amazon_blue: {
           light: "#232F3E",
@@ -26,3 +30,4 @@ module.exports = {
 
   plugins: [require("@tailwindcss/line-clamp")],
 };
+//https://wallpaperbat.com/img/600854-wallpaper-galaxy-earth-network-stars-galaxy-1080p-desktop-background-wallpaper-hd-3840x2400-download-hd-wallpaper.jpg
