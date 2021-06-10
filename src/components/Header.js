@@ -19,7 +19,14 @@ function Header() {
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
       <div className="flex items-center justify-center bg-green-600 p-2 lg:p-0 md:p-0 sm:p-0">
-        <div className="flex items-center flex-grow sm:flex-grow-0 md:ml-2 lg:ml-52 ml-2 mt-1">
+        <div className="h-100  flex-col items-center justify-center py-10 cursor-pointer lg:hidden md:hidden sm:hidden">
+          <div>
+            <p className="w-10 h-1 bg-white mb-1"></p>
+            <p className="w-10 h-1 bg-white mb-1"></p>
+            <p className="w-10 h-1 bg-white mb-1"></p>
+          </div>
+        </div>
+        <div className="flex items-center flex-grow sm:flex-grow-0 md:ml-2 lg:ml-12 ml-2 mt-1">
           <Image
             src="/logo.png"
             width={100}
@@ -29,28 +36,31 @@ function Header() {
             onClick={() => router.push("/")}
           />
         </div>
-        <div className="bg-green-500 hover:bg-green-700 flex sm:flex  items-center h-10 rounded-md flex-grow cursor-pointer lg:ml-9 hidden">
+        <div className="bg-green-500 hover:bg-green-700 flex   items-center h-10 rounded-md flex-grow cursor-pointer lg:ml-9 lg:flex hidden md:flex">
           <input
             type="text"
             className="p-2 h-full w-6 flex-grow rounded-l-md flex-shrink outline-none px-4"
           />
-          <SearchIcon className="h-12 p-4" />
+          <SearchIcon className="h-12 p-4 " />
         </div>
         <div className="text-white flex items-center text-sm space-x-6 mx-2 whitespace-nowrap cursor-pointer ">
-          <div className="link flex" onClick={() => router.push("/auth")}>
+          <div
+            className="link flex hidden sm:flex"
+            onClick={() => router.push("/auth")}
+          >
             <UserIcon className="h-6" />
             <p className=" link font-bold ml-2 sm:inline mt-1 text-xs">
               {user ? `${user.name}` : "Sign In"}
             </p>
           </div>
-          <div className="link flex">
+          <div className="link flex hidden sm:flex">
             <BriefcaseIcon className="h-6" />
             <p className="link font-bold ml-2 sm:inline  mt-1 text-xs ">
               Your Orders
             </p>
           </div>
           {user && (
-            <div className="link flex" onClick={() => logout()}>
+            <div className="link flex hidden sm:flex" onClick={() => logout()}>
               <LogoutIcon className="h-6" />
               <p className="link font-bold ml-2 sm:inline  mt-1 text-xs ">
                 Logout
@@ -62,8 +72,8 @@ function Header() {
               {items.length}
             </span>
 
-            <ShoppingBagIcon className="h-6" />
-            <p className="link font-bold  text-xs ml-2 mt-1 md:mr-2 lg:mr-52 sm:mr-2 hidden sm:inline">
+            <ShoppingBagIcon className="h-6 mr-4 lg:mr-0 sm:mr-0 md:mr-0" />
+            <p className="link font-bold  text-xs ml-2 mt-1 md:mr-2  lg:mr-24 sm:mr-2 hidden sm:inline">
               Cart
             </p>
           </div>

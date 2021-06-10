@@ -11,7 +11,7 @@ export default function Home({ product }) {
         <title>Sports</title>
       </Head>
       <Header />
-      <main className="max-w-screen-2xl mx-auto  ">
+      <main className="max-w-screen-2xl mx-auto">
         <ProductFeed products={product} />
       </main>
     </div>
