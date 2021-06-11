@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/Product.module.css";
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
-import { useRouter } from "next/router";
 import { FilterIcon } from "@heroicons/react/solid";
 
 function Filter() {

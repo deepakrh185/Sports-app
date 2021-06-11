@@ -23,10 +23,7 @@ function Header() {
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
       {showMenu && (
-        <div
-          className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex   "
-          onClick={() => setShowMenu(false)}
-        >
+        <div className="fixed  h-screen top-0 left-0 right-0 z-50 flex justify-start lg:hidden md:hidden sm:flex   ">
           <div className="relative z-30 w-80 sm:w-96 bg-white h-screen flex flex-col">
             <div className="flex items-center">
               <Image
@@ -39,15 +36,24 @@ function Header() {
               />
             </div>
             <div className="text-white flex flex-col ml-6 mt-6  whitespace-nowrap cursor-pointer ">
-              <div
-                className="link flex text-gray-500 items-center"
-                onClick={() => router.push("/auth")}
-              >
-                <UserIcon className="h-6 text-gray-500 mr-1" />
-                <p className=" link font-bold text-base">
-                  {user ? `${user.name}` : "Sign In"}
-                </p>
-              </div>
+              {!user ? (
+                <div
+                  className="link flex text-gray-500 items-center"
+                  onClick={() => router.push("/auth")}
+                >
+                  <UserIcon className="h-6 text-gray-500 mr-1" />
+                  <p className=" link font-bold text-base">
+                    {user ? `${user.name}` : "Sign In"}
+                  </p>
+                </div>
+              ) : (
+                <div className="link flex text-gray-500 items-center">
+                  <UserIcon className="h-6 text-gray-500 mr-1" />
+                  <p className=" link font-bold text-base">
+                    {user ? `${user.name}` : "Sign In"}
+                  </p>
+                </div>
+              )}
               <div className="link flex  text-gray-500 mt-6 items-center">
                 <BriefcaseIcon className="h-6 text-gray-500 mr-1" />
                 <p className="link font-bold  text-base">Your Orders</p>
@@ -63,7 +69,10 @@ function Header() {
               )}
             </div>
           </div>
-          <div className="w-full h-screen bg-gray-900 bg-opacity-60 fixed top-0 right-0 z-10" />
+          <div
+            className="w-full h-screen bg-gray-900 bg-opacity-60 fixed top-0 right-0 z-10"
+            onClick={() => setShowMenu(false)}
+          />
         </div>
       )}
       <div className="flex items-center justify-center bg-green-600  lg:p-0 md:p-0 sm:p-0">
@@ -92,16 +101,25 @@ function Header() {
           <SearchIcon className="h-12 p-4 " />
         </div>
         <div className="text-white flex items-center text-sm space-x-6 mx-2 whitespace-nowrap cursor-pointer ">
-          <div
-            className="link flex hidden sm:flex"
-            onClick={() => router.push("/auth")}
-          >
-            <UserIcon className="h-6" />
-            <p className=" link font-bold ml-2 sm:inline mt-1 text-xs">
-              {user ? `${user.name}` : "Sign In"}
-            </p>
-          </div>
-          <div className="link flex hidden sm:flex">
+          {!user ? (
+            <div
+              className="link flex hidden  sm:flex"
+              onClick={() => router.push("/auth")}
+            >
+              <UserIcon className="h-6" />
+              <p className=" link font-bold ml-2 sm:inline mt-1 text-xs">
+                {user ? `${user.name}` : "Sign In"}
+              </p>
+            </div>
+          ) : (
+            <div className="link flex hidden sm:flex">
+              <UserIcon className="h-6" />
+              <p className=" link font-bold ml-2 sm:inline mt-1 text-xs">
+                {user ? `${user.name}` : "Sign In"}
+              </p>
+            </div>
+          )}
+          <div className="link flex hidden  sm:flex">
             <BriefcaseIcon className="h-6" />
             <p className="link font-bold ml-2 sm:inline  mt-1 text-xs ">
               Your Orders
