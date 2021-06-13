@@ -133,7 +133,10 @@ function Header() {
               </p>
             </div>
           )}
-          <div className="relative flex items-center flex-shrink">
+          <div
+            className="relative flex items-center flex-shrink"
+            onClick={() => router.push("/Cart")}
+          >
             <span className="absolute top-0 right-0 left-4 md:right-10 sm:right-10 h-4 w-4 bg-green-300 text-center rounded-full text-black font-bold  text-xs">
               {items.length}
             </span>
