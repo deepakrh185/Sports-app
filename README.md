@@ -5,6 +5,7 @@
 * Super Cool Frontend Design.
 * ServerSide rendering with NEXTJS.
 * Authentication with Email, Google, FaceBook.
+* Stipe Payment
 
 
  
