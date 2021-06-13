@@ -21,9 +21,10 @@ import { Carousel } from "react-responsive-carousel";
 
 function Detail({ product }) {
   const router = useRouter();
+  const [quantity, setQuantity] = useState(1);
+
   const { title, price, description, image, images, imageBounce } = product;
   const [sideImage, setSideImage] = useState(images[0].img);
-  const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [lineClamp, setLineClamp] = useState(true);
 
