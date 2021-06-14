@@ -23,20 +23,18 @@ function CheckoutProducts({ id, title, price, description, image, shipping }) {
     dispatch(addToBasket(products));
   };
   return (
-    <main className="lg:flex   border-2 shadow-2xl">
-      <div className="grid grid-cols-5 p-4">
-        <Image src={image} width={400} height={500} objectFit="contain" />
-        <div className="flex flex-col  p-4">
-          <h1 className=" text-green-500 w-96 text-xl mb-4">{title}</h1>
-          <h1 className="text-2xl">₹{price}.00</h1>&nbsp;
-          <QuantityCount
-            setQuantity={setQuantity}
-            quantity={quantity}
-            className="mt-4"
-          />
-        </div>
+    <div className="grid grid-cols-5 p-4 border-2 shadow-xl">
+      <Image src={image} width={400} height={500} objectFit="contain" />
+      <div className="flex flex-col  p-4">
+        <h1 className=" text-green-500 w-96 text-xl mb-4">{title}</h1>
+        <h1 className="text-2xl">₹{price}.00</h1>&nbsp;
+        <QuantityCount
+          setQuantity={setQuantity}
+          quantity={quantity}
+          className="mt-4"
+        />
       </div>
-    </main>
+    </div>
   );
 }
 
