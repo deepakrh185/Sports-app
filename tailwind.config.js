@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        "socialMedia":
+        socialMedia:
           "url('https://wallpapers-hub.art/wallpaper-images/19611.jpg')",
-      }), 
+      }),
       colors: {
         amazon_blue: {
           light: "#232F3E",

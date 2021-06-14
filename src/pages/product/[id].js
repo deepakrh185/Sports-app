@@ -54,6 +54,7 @@ function Detail({ product }) {
       rating,
       description,
       image,
+      strikePrice,
     };
     dispatch(addToBasket(products));
     setAdded(true);
@@ -67,7 +68,7 @@ function Detail({ product }) {
       </Head>
       <Header />
       <div
-        className="w-full bg-gray-800 items-center rounded-bl-lg rounded-br-lg flex justify-center p-4 lg:hidden md:hidden "
+        className="w-full bg-gray-800 items-center  flex justify-center p-4 lg:hidden md:hidden "
         onClick={() => router.push("/product")}
       >
         <FilterIcon className="h-5 text-white mr-2" />
@@ -187,14 +188,14 @@ function Detail({ product }) {
                 {title}
               </h1>
               <div className="flex items-center text-center mb-4 mt-10">
-                <h4 className="text-xl flex">Rating : </h4>&nbsp;
+                <h4 className="text-xl flex font-medium">Rating : </h4>&nbsp;
                 <span className="my-1 flex items-center justify-center align-center text-xl px-1 rounded-md bg-green-400 flex-shrink w-16  text-white ring-current py-1 ">
                   {rating}
                   <StarIcon className="h-5 fill-current text-white" />
                 </span>
               </div>
               <div className="flex items-center text-center mb-4">
-                <h4 className="text-xl flex">Reviews : </h4>&nbsp;
+                <h4 className="text-xl flex font-medium">Reviews : </h4>&nbsp;
                 <p className="text-xl"> {reviews}</p>
               </div>
 
