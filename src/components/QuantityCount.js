@@ -1,7 +1,6 @@
 import styles from "../styles/QuantityCount.module.css";
 import { updateQuantity } from "../slices/basketSlice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 
 function QuantityCount({
   setQuantity,
@@ -32,7 +31,11 @@ function QuantityCount({
 
   return (
     <div className={styles.quantityCount}>
-      <button onClick={decreaseCount} className={styles.actionBtn}>
+      <button
+        onClick={decreaseCount}
+        className={styles.actionBtn}
+        disabled={quantity === 1}
+      >
         -
       </button>
 
