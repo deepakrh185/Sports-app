@@ -68,6 +68,14 @@ export const selectProduct = (state) => state.basket.product;
 export const selectFilteredProducts = (state) => state.basket.filteredProduct;
 
 export const selectTotalItem = (state) =>
-  state.basket.items.reduce((total, item) => total + Math.round(item.price), 0);
+  state.basket.items.reduce(
+    (total, item) => total + Math.round(item.price * item.quantity),
+    0
+  );
+export const selectTotal = (state) =>
+  state.basket.items.reduce(
+    (total, item) => total + Math.round(item.quantity),
+    0
+  );
 
 export default basketSlice.reducer;

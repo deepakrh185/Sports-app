@@ -21,11 +21,11 @@ import { Carousel } from "react-responsive-carousel";
 
 function Detail({ product }) {
   const router = useRouter();
-  const [quantity, setQuantity] = useState(1);
 
   const { title, price, description, image, images, imageBounce } = product;
   const [sideImage, setSideImage] = useState(images[0].img);
   const [added, setAdded] = useState(false);
+  const [label, setLabel] = useState(false);
   const [lineClamp, setLineClamp] = useState(true);
 
   const dispatch = useDispatch();
@@ -55,12 +55,16 @@ function Detail({ product }) {
       description,
       image,
       strikePrice,
+      quantity: 1,
     };
     dispatch(addToBasket(products));
     setAdded(true);
-    setTimeout(() => setAdded(false), 3000);
+    setLabel(true);
+    setInterval(() => setLabel(false), 3000);
   };
-
+  const cartHandler = () => {
+    router.push("/cart");
+  };
   return (
     <>
       <Head>
@@ -94,7 +98,7 @@ function Detail({ product }) {
         style={{ position: "sticky", top: 100, zIndex: 50 }}
       >
         <div className="absolute right-0 top-0">
-          {added && (
+          {label && (
             <div
               class=" px-4 py-3 rounded-md relative  bg-yellow-400 mr-2"
               role="alert"
@@ -222,20 +226,27 @@ function Detail({ product }) {
                   </button>
                 </div>
               )}
-              <QuantityCount
-                setQuantity={setQuantity}
-                quantity={quantity}
-                className="mt-4"
-              />
-              <div
-                className="flex items-center text-center justify-center button mt-4"
-                onClick={addItemToBasket}
-              >
-                <button className="font-bold focus:outline-none">
-                  {added ? "Added" : "Add to Cart"}
-                </button>
-                <ShoppingBagIcon className="h-5 ml-1" />
+              <div onClick={addItemToBasket}>
+                {!added ? (
+                  <div className="flex items-center text-center justify-center button mt-4">
+                    <button className="font-bold focus:outline-none flex">
+                      <p>Add to cart</p>
+                      <ShoppingBagIcon className="h-5 ml-1" />
+                    </button>
+                  </div>
+                ) : null}
               </div>
+              {added && (
+                <div
+                  className="flex items-center text-center justify-center button mt-4"
+                  onClick={cartHandler}
+                >
+                  <button className="font-bold focus:outline-none flex">
+                    <p>Go to cart</p>
+                    <ShoppingBagIcon className="h-5 ml-1" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </main>

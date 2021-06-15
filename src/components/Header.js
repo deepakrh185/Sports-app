@@ -8,13 +8,14 @@ import {
 import { MenuIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { selectItems } from "../slices/basketSlice";
+import { selectItems, selectTotal } from "../slices/basketSlice";
 import { useRouter } from "next/router";
 import { useUser } from "../../firebase/useUser";
 import { useState } from "react";
 
 function Header() {
   const { user, logout } = useUser();
+  const totalItems = useSelector(selectTotal);
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -138,7 +139,7 @@ function Header() {
             onClick={() => router.push("/cart")}
           >
             <span className="absolute top-0 right-0 left-4 md:right-10 sm:right-10 h-4 w-4 bg-green-300 text-center rounded-full text-black font-bold  text-xs">
-              {items.length}
+              {totalItems}
             </span>
 
             <ShoppingBagIcon className="h-6 mr-4 lg:mr-0 sm:mr-0 md:mr-0" />

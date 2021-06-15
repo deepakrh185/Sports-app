@@ -15,24 +15,14 @@ function CheckoutProducts({
   id,
   title,
   price,
-  description,
   image,
   rating,
   strikePrice,
+  quantity,
 }) {
-  const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
-  const [images, setImage] = useState(false);
-  const addItemToBasket = () => {
-    const products = {
-      title,
-      price,
-      rating,
-      description,
-      image,
-    };
-    dispatch(addToBasket(products));
-  };
+  const [quantityUp, setQuantityUp] = useState(quantity);
+
   const removeBasket = () => {
     dispatch(removeFromBasket({ id }));
   };
@@ -56,11 +46,16 @@ function CheckoutProducts({
           </div>
         </div>
         <div className="flex items-center  mb-6">
-          <h1 className="text-2xl">₹{price}.00</h1>&nbsp;
+          <h1 className="text-2xl">₹{price * quantity}.00</h1>&nbsp;
           <strike className="text-xl">₹{strikePrice}</strike>
         </div>
         <div className="flex">
-          <QuantityCount setQuantity={setQuantity} quantity={quantity} />
+          <QuantityCount
+            id={id}
+            dispatch
+            setQuantity={setQuantityUp}
+            quantity={quantityUp}
+          />
           <button
             className="border-2 sm:ml-8 ml-2 lg:ml-8 md:ml-8 p-2 rounded-lg text-black font-bold"
             onClick={removeBasket}
