@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import CheckoutProducts from "../components/CheckoutProducts";
 import { selectItems, selectTotalItem } from "../slices/basketSlice";
 import Header from "../components/Header";

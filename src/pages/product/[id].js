@@ -2,7 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import Header from "../../components/Header";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../slices/basketSlice";
@@ -20,15 +20,20 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 function Detail({ product }) {
-  const router = useRouter();
-
   const { title, price, description, image, images, imageBounce } = product;
   const [sideImage, setSideImage] = useState(images[0].img);
   const [added, setAdded] = useState(false);
   const [label, setLabel] = useState(false);
   const [lineClamp, setLineClamp] = useState(true);
 
+  useEffect(() => {
+    setAdded(JSON.parse(localStorage.getItem("added")));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("added", added);
+  }, [added]);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const MAX_RATING = 4;
   const MIN_RATING = 2.5;
@@ -57,11 +62,14 @@ function Detail({ product }) {
       strikePrice,
       quantity: 1,
     };
+
     dispatch(addToBasket(products));
     setAdded(true);
     setLabel(true);
+
     setInterval(() => setLabel(false), 3000);
   };
+
   const cartHandler = () => {
     router.push("/cart");
   };
