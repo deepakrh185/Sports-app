@@ -1,15 +1,9 @@
 import QuantityCount from "./QuantityCount";
 import { useState } from "react";
-import { addToBasket, removeFromBasket } from "../slices/basketSlice";
+import { removeFromBasket } from "../slices/basketSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
-import { selectItems } from "../slices/basketSlice";
-import { getSession, useSession } from "next-auth/client";
-import {
-  StarIcon,
-  CheckCircleIcon,
-  FilterIcon,
-} from "@heroicons/react/outline";
+import { StarIcon } from "@heroicons/react/outline";
 
 function CheckoutProducts({
   id,
@@ -31,7 +25,14 @@ function CheckoutProducts({
       className={`grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-4 grid-cols-1
        mb-12  border-2 shadow-xl p-6 rounded-2xl mt-6`}
     >
-      <Image src={image} width={400} height={300} objectFit="contain" />
+      <Image
+        src={image}
+        width={400}
+        height={300}
+        objectFit="contain"
+        loading="lazy"
+      />
+
       <div className="flex flex-col col-span-3 lg:ml-12 md:ml-12 sm:ml-10">
         <h1 className=" text-green-500 text-xl font-normal sm:font-semibold mb-4 mt-4 md:font-semibold lg:font-semibold ">
           {title}

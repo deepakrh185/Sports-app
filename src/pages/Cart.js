@@ -1,18 +1,26 @@
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CheckoutProducts from "../components/CheckoutProducts";
 import { selectItems, selectTotalItem } from "../slices/basketSlice";
 import Header from "../components/Header";
 import { getSession, useSession } from "next-auth/client";
 import { useUser } from "../../firebase/useUser";
 import { useRouter } from "next/router";
+import Items from "../pages/product/[id]";
+import Image from "next/image";
 
 function Cart() {
+  const [selected, setSelected] = useState([]);
+
+  useEffect(() => {
+    setSelected(JSON.parse(localStorage.getItem("selectedItems")));
+  }, [Items]);
+
   const items = useSelector(selectItems);
   const { user } = useUser();
+  console.log(selected);
 
   const total = useSelector(selectTotalItem);
-  console.log("total", total);
   const router = useRouter();
   return (
     <div>
@@ -23,9 +31,27 @@ function Cart() {
             <h1 className="text-3xl border-b pb-4">
               {items.length === 0 ? "Your cart is Empty" : "Shopping Cart"}
             </h1>
-
+            {selected.title}
+            <img
+              src={selected.image}
+              width="100"
+              height="100"
+              objectFit="contain"
+              loading="lazy"
+            />
             {!!items.length &&
-              items.map((item) => <CheckoutProducts key={item.id} {...item} />)}
+              items.map((item, i) => (
+                <CheckoutProducts
+                  key={i}
+                  id={item.id}
+                  title={item.title}
+                  rating={item.rating}
+                  price={item.price}
+                  description={item.description}
+                  image={item.image}
+                  quantity={item.quantity}
+                />
+              ))}
           </div>
         </div>
 
@@ -37,7 +63,6 @@ function Cart() {
                 Subtotal ({items.length} items) :
                 <span className="font-bold"> ₹ {total}.00</span>
               </h2>
-
               <button
                 role="link"
                 className="button font-bold focus:outline-none mt-4"

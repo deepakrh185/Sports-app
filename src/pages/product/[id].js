@@ -12,12 +12,15 @@ import {
   CheckCircleIcon,
   FilterIcon,
 } from "@heroicons/react/outline";
-import QuantityCount from "../../components/QuantityCount";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import styles from "../../styles/Product.module.css";
 import { useRouter } from "next/router";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+
+export function Items(products) {
+  localStorage.setItem("selectedItems", JSON.stringify(products));
+}
 
 function Detail({ product }) {
   const { title, price, description, image, images, imageBounce } = product;
@@ -32,6 +35,7 @@ function Detail({ product }) {
   useEffect(() => {
     localStorage.setItem("added", added);
   }, [added]);
+
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -52,6 +56,7 @@ function Detail({ product }) {
   const strikePrice = useState(
     Math.floor(Math.random() * (MAX__RATING - MIN__RATING + 1) + MIN__RATING)
   );
+
   const addItemToBasket = () => {
     const products = {
       title,
@@ -66,8 +71,8 @@ function Detail({ product }) {
     dispatch(addToBasket(products));
     setAdded(true);
     setLabel(true);
-
     setInterval(() => setLabel(false), 3000);
+    Items(products);
   };
 
   const cartHandler = () => {
